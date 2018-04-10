@@ -30,7 +30,6 @@ public abstract class AFmodAudioSystem : MonoBehaviour
 
             _mute = value;
             FmodAudioManager.DOAll(m => m.mute = value);
-            FmodAudioManager.GetAudioManagerGlobal().mute = value;
         }
     }
 
@@ -76,8 +75,7 @@ public abstract class AFmodAudioSystem : MonoBehaviour
             system.init(64, INITFLAGS.NORMAL, (IntPtr)null);
         }
 
-        FmodAudioManager.DOAll(fam => fam.Init());
-        FmodAudioManager.GetAudioManagerGlobal().Init();
+        FmodAudioManager.Init();
         InitSounds();
         DontDestroyOnLoad(gameObject);
     }
@@ -112,7 +110,8 @@ public abstract class AFmodAudioSystem : MonoBehaviour
 
         int n = 0, m = 0;
         Memory.GetStats(out n, out m);
-        FmodAudioManager.DOAll(fam => fam.Release());
+        FmodAudioManager.Release();
+        //DOAll(fam => fam.Release());
         FmodSoundCreater.ReleaseInstance();
         system.close();
         system.release();
