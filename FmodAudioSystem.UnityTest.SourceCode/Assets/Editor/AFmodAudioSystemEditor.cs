@@ -18,13 +18,7 @@ public class AFmodAudioSystemEditor : Editor
     //Follow UnityEditor paused
     private static void Paused()
     {
-
-        //if (AFmodAudioSystem.instance.)
-        //{
-
-        //}
         FmodAudioManager.DOAll(m => m.PauseAll(EditorApplication.isPaused));
-        FmodAudioManager.GetAudioManagerGlobal().PauseAll(EditorApplication.isPaused);
     }
 
     //Follow UnityEditor mute
