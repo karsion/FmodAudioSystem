@@ -6,15 +6,15 @@ using FMODSystem = FMOD.System;
 
 public abstract class AFmodAudioSystem : MonoBehaviour
 {
-    internal static FMODSystem system = null;
-    private static string strFilePath = null;
+    internal static FMODSystem system;
+    private static string strFilePath;
 
     private static readonly string[] strExtensions =
     {
         ".ogg", ".wav", ".mp3"
     };
 
-    private static bool _mute = false;
+    private static bool _mute;
 
     public static AFmodAudioSystem instance { get; private set; }
 
@@ -122,4 +122,9 @@ public abstract class AFmodAudioSystem : MonoBehaviour
             Debug.LogError("FmodAudioSystem Memory Leak：Current  " + n + " Maximum " + m);
         }
     }
+
+    //public void Dispose()
+    //{
+    //    OnDestroy();
+    //}
 }
